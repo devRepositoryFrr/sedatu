@@ -1,0 +1,55 @@
+﻿@model ConaviWeb.Model.Request.UserRequest
+@{
+    Layout = "_LayoutSedatu";
+    ViewBag.Title = "Login";
+}
+<div class="d-flex justify-content-center">
+    <div class="card text-bg-dark mb-3"  style="width: 50rem;">
+        <div class="card-header">Inicio de sesión</div>
+        <div class="card-body">
+            <div class="row" style="text-align:center">
+                <a href="https://www.gob.mx/conavi" style="margin-left: 0px;margin-top: -15px;"><i class="icon-cnv red-ic" style="font-size: 100px;"></i></a>
+            </div>
+            @Html.Raw(@ViewBag.Alert)
+            <form method="post" asp-action="Auth">
+                <div class="alert alert-danger" asp-validation-summary="ModelOnly"><button class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
+                <div class="mb-3">
+                    <label asp-for="SUser" class="form-label">Email</label>
+                    <input type="text" class="form-control" asp-for="SUser">
+                    <span asp-validation-for="SUser" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" asp-for="Password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <button class="btn btn-primary pull-right" type="submit"><span class="fa fa-sign-in"></span>&ensp;Iniciar Sesión</button>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    @section Scripts {@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}}
+    <script>
+        $(document).ready(function () {
+            showAlert();
+        });
+        $(window).on('beforeunload', function () {
+            console.log("before");
+
+            $('.spinner').css('display', 'block');
+        });
+
+        function showAlert() {
+
+            setTimeout(function () {
+                $("#alerta").fadeOut(1500);
+
+            }, 3000);
+            setTimeout(function () {
+
+                $("#alerta").remove();
+            }, 6000);
+
+        }
+    </script>
