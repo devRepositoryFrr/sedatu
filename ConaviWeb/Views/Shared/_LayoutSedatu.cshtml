@@ -104,9 +104,11 @@
             }
             //LISTA DENTRO DE CABECERA MODULOS
             if (value.Orden != 0) {
+                var myActionUrl = "@Url.Action("Index","Controller")";
+                myActionUrl = myActionUrl.replace("Controller", value.Url);
                 $("#ul-" + value.Orden).append(
                     $('<li>').append(
-                        $('<a>').attr('class', 'dropdown-item').attr('href', value.Url).append(
+                        $('<a>').attr('class', 'dropdown-item').attr('href', myActionUrl).append(
                             $('<i>').attr('class', value.Ico).attr('aria-hidden', 'true')).append(" "+value.Text))
                 );
             }

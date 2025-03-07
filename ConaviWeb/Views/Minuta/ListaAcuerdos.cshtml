@@ -77,7 +77,7 @@
     });
 
     $(window).on('beforeunload', function () {
-        console.log("before");
+        //console.log("before");
         $('.spinner').css('display', 'block');
     });
 
@@ -264,7 +264,7 @@
                         let interno = row["interno"] == null ? "" : row["interno"];
                         let externo = row["externo"] == null ? "" : " | " + row["externo"];
                         var result = interno + '  ' + externo;
-                        console.log(result);
+                        //console.log(result);
                         return result;
                     },
                     "targets": 2,

@@ -183,8 +183,8 @@ namespace ConaviWeb.Data.Minuta
                             select r.id id,cs.descripcion sector,ce.descripcion EntidadFed,cm.descripcion Municipio,DATE_FORMAT(fch_solicitud,'%d/%m/%Y') FechaSolicitud,DATE_FORMAT(fch_atencion,'%d/%m/%Y') FechaAtencion,asunto,nombre_sol nombreSol,cargo_sol cargoSol,dependencia_sol dependenciaSol,r.nombre_cont nombreCont,r.telefono_cont telefonoCont,r.email_cont emailCont,antecedentes,observaciones,cp.nombre responsable ,cg.descripcion gestion,e.descripcion estatus
                             from sedatu.reunion r
                             join sedatu.c_sector cs on cs.id = r.id_sector
-                            join sedatu.c_entidad ce on ce.clave = r.cv_ef
-                            join sedatu.c_municipio cm on cm.cv_ef = r.cv_ef and cm.cv_mun = r.cv_mun
+                            left join sedatu.c_entidad ce on ce.clave = r.cv_ef
+                            left join sedatu.c_municipio cm on cm.cv_ef = r.cv_ef and cm.cv_mun = r.cv_mun
                             left join sedatu.c_personal cp on cp.id = r.id_responsable
                             join sedatu.c_gestion cg on cg.id = r.id_gestion
                             join sedatu.c_estatus e on e.id = r.estatus
@@ -435,8 +435,8 @@ namespace ConaviWeb.Data.Minuta
                             select r.id id, cs.descripcion sector, dependencia_sol dependenciaSol, ce.descripcion entidadFed, cm.descripcion municipio, r.asunto, r.nombre_sol nombreSol, DATE_FORMAT(fch_solicitud,'%d/%m/%Y') fechaSolicitud, e.descripcion estatus
                             from sedatu.reunion r 
                             join sedatu.c_sector cs on cs.id = r.id_sector 
-                            join sedatu.c_entidad ce on ce.clave = r.cv_ef 
-                            join sedatu.c_municipio cm on cm.cv_ef = r.cv_ef and cm.cv_mun = r.cv_mun
+                            left join sedatu.c_entidad ce on ce.clave = r.cv_ef 
+                            left join sedatu.c_municipio cm on cm.cv_ef = r.cv_ef and cm.cv_mun = r.cv_mun
                             join sedatu.c_estatus e on e.id = r.estatus;
                            ";
             return await db.QueryAsync<ReunionResponse>(sql);

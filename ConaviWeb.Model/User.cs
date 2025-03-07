@@ -21,7 +21,7 @@ namespace ConaviWeb.Model
         public string Degree { get; set; }
         public DateTime CreateDate { get; set; }
         public string Integrador { get; set; }
-        public AreaType Area { get; set; }
+        public string Area { get; set; }
         public int IdSystem { get; set; }
         public string Signer { get; set; }
         public string Active { get; set; }

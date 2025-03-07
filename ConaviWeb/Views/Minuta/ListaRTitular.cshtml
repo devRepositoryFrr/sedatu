@@ -55,7 +55,7 @@
     });
 
     $(window).on('beforeunload', function () {
-        console.log("before");
+        //console.log("before");
         $('.spinner').css('display', 'block');
     });
 
@@ -154,7 +154,7 @@
                 complete: function (data) {
                     $("#spinner").hide();
                     details = data.responseJSON.data;
-                    console.log(data);
+                    //console.log(data);
                 }
             },
             fixedColumns: true,
